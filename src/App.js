@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
   const [posts, setPosts] = useState([]);
+  const [classes, setClasses] = useState([]);
 
   useEffect(() => {
     async function fetchPosts(){
@@ -19,7 +19,22 @@ function App() {
       }
     }
 
+    async function fetchClasses(){
+      try{
+        const response = await fetch('https://dnd5eapi.co/api/classes');
+        if (!response.ok){
+          throw new Error('D&D 5e SRD API not available.')
+        }
+        const data = await response.json();
+        setClasses(data);
+        console.log(classes);
+      } catch (err) {
+        console.error(err)
+      }
+    }
+
     fetchPosts();
+    fetchClasses();
   }, []);
 
   return (
