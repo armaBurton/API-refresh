@@ -21,7 +21,7 @@ function App() {
 
     async function fetchClasses(){
       try{
-        const response = await fetch('https://dnd5eapi.co/api/classes');
+        const response = await fetch('https://dnd5eapi.co/api/classes/bard');
         if (!response.ok){
           throw new Error('D&D 5e SRD API not available.')
         }
