@@ -27,7 +27,7 @@ function App() {
         }
         const data = await response.json();
         setClasses(data);
-        console.log(classes);
+        console.log(data);
       } catch (err) {
         console.error(err)
       }
